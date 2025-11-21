@@ -1,0 +1,9 @@
+node_modules/
+*.swp
+*.log
+*.zip
+npm-debug.log*
+
+# OAuth credentials (never commit these!)
+client_secret_*.json
+credentials.json
