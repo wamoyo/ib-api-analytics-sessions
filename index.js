@@ -17,6 +17,19 @@ var ACCESS_KEY = process.env.ACCESS_KEY || 'sessions2025'
 export async function handler (event) {
   console.log('EVENT:', JSON.stringify(event))
 
+  // Handle CORS preflight
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type'
+      },
+      body: ''
+    }
+  }
+
   try {
     // Check authentication
     var key = event.queryStringParameters?.key || ''
